@@ -45,7 +45,7 @@ function HomePage() {
           className='py-3 px-5 shadow-lg'
         >
           <option value="">
-            Filtrar por región
+            Filter by region
           </option>
           <option value="Africa">
             Africa
