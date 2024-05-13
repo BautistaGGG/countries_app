@@ -25,20 +25,21 @@ function CountryDetail() {
 
   return (
     <main className='container mx-auto'>
-      <div className='my-10'>
-        <a href='/' className='border border-gray-300 py-2 px-12 rounded-lg'>
+      <div className='inline-block ml-8 md:ml-0 my-10 border border-gray-100 py-2 px-12 rounded-md shadow-lg'>
+        <i className="fa fa-long-arrow-left" aria-hidden="true"></i>
+        <a href='/' className='ml-2'>
           Back
         </a>
       </div>
 
-      <section className='grid grid-cols-2'> 
+      <section className='flex flex-col md:grid md:grid-cols-2 p-8 md:p-0'> 
         <img src={country.flags.svg} alt={country.name.common} />
-        <article className='ml-12'>
-          <h1 className='text-3xl font-bold'>
+        <article className='ml-0 md:ml-12'>
+          <h1 className='text-3xl font-bold mt-6 md:mt-auto'>
             {country.name.common}
           </h1>
 
-          <ul className='my-6 flex justify-between'>
+          <ul className='my-6 flex flex-col md:flex-row gap-4 md:gap-0 justify-between'>
             <div>
               <li className='list-none'>
                 <p>
@@ -99,7 +100,7 @@ function CountryDetail() {
           <ul className='flex flex-wrap gap-4 list-none'>
             <h2 className='font-bold'>
               Border countries:
-              </h2>
+            </h2>
             {country.borders.map((borderCode) => (
               <li key={borderCode}>
                 <a 
@@ -111,7 +112,6 @@ function CountryDetail() {
               </li>
             ))}
           </ul>
-          
           }
         </article>
       </section>

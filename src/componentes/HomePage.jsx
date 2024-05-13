@@ -32,12 +32,12 @@ function HomePage() {
 
   return (
     <main className='container mx-auto'>
-      <section className='flex justify-between my-8'>
+      <section className='flex flex-col gap-8 md:gap-0 md:flex-row justify-between my-8'>
         <input 
           type="text" value={searchQuery} 
           onChange={onChangeBusqueda} 
           placeholder="Search for a country..." 
-          className='py-3 pl-4 pr-40 border border-slate-300'
+          className='py-3 pl-4 pr-40 border border-slate-100 rounded-lg shadow-md'
         />
         <select 
           value={selectedRegion} 
@@ -47,19 +47,19 @@ function HomePage() {
           <option value="">
             All regions
           </option>
-          <option value="Africa">
+          <option value="Africa" className='py-2 px-4'>
             Africa
           </option>
-          <option value="Americas">
+          <option value="Americas" className='my-2 mx-4'>
             Americas
           </option>
-          <option value="Asia">
+          <option value="Asia" className='my-2 mx-4'>
             Asia
           </option>
-          <option value="Europe">
+          <option value="Europe" className='my-2 mx-4'>
             Europe
           </option>
-          <option value="Oceania">
+          <option value="Oceania" className='my-2 mx-4'>
             Oceania
           </option>
         </select>

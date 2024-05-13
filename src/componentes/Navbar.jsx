@@ -1,12 +1,12 @@
 function Navbar() {
   return (
-    <nav className='flex justify-between p-8 shadow-xl'>
+    <nav className='flex justify-center md:justify-start p-8 shadow-xl'>
         <a href="/">
             <h1 className="font-bold text-2xl">
               Where in the world?
             </h1>
         </a>
-        <p>Dark mode</p>
+        {/* <p>Dark mode</p> */}
     </nav>
   )
 }

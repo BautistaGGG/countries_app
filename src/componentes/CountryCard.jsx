@@ -1,3 +1,6 @@
+/* eslint-disable react/prop-types */
+// eslint-disable-next-line react/prop-types
+
 function CountryCard({ country }) {
   return (
     <main className="bg-white shadow-md rounded-md p-4">
