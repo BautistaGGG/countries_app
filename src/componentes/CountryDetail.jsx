@@ -16,25 +16,32 @@ function CountryDetail() {
       fetchData();
     }
   }, [alpha3Code]);
+  
+  //Pasando Objectos de la API a Array para poder displayear la info correctamente
+  const nativeNameDelPais = country !== null && Object.values(country.name.nativeName).map(nombreNativo => nombreNativo.official)[0]
+  const monedaDelPais = country !== null && Object.values(country.currencies).map(moneda => moneda.name)
+  const languagesDelPais = country !== null && Object.values(country.languages).map(lan => lan)
 
   if (!country) {
     return  <main className='container mx-auto'> 
-              <h2>Loading...</h2>
+              <h2 className='text-center text-2xl font-bold my-4'>
+                Loading...
+              </h2>
             </main>;
   }
 
   return (
     <main className='container mx-auto'>
-      <div className='inline-block ml-8 md:ml-0 my-10 border border-gray-100 py-2 px-12 rounded-md shadow-lg'>
+      <a href='/' className='inline-block ml-8 md:ml-0 my-10 border border-gray-00 py-2 px-12 rounded shadow-xl'>
         <i className="fa fa-long-arrow-left" aria-hidden="true"></i>
-        <a href='/' className='ml-2'>
+        <p className='inline ml-2'>
           Back
-        </a>
-      </div>
+        </p>
+      </a>
 
       <section className='flex flex-col md:grid md:grid-cols-2 p-8 md:p-0'> 
         <img src={country.flags.svg} alt={country.name.common} />
-        <article className='ml-0 md:ml-12'>
+        <article className='ml-0 md:ml-12 text-TextoDarkBlue'>
           <h1 className='text-3xl font-bold mt-6 md:mt-auto'>
             {country.name.common}
           </h1>
@@ -43,8 +50,8 @@ function CountryDetail() {
             <div>
               <li className='list-none'>
                 <p>
-                  <span className='font-bold'>Native name:</span> 
-                  {/* {country.name.nativeName} */}
+                  <span className='font-bold pr-2'>Native name:</span> 
+                  {nativeNameDelPais}
                 </p>
               </li>
               <li className='list-none'>
@@ -77,19 +84,19 @@ function CountryDetail() {
               <li className='list-none'>
                 <p>
                 <span className='font-bold pr-2'>Top Level Domain:</span> 
-                {country.capital && country.capital[0]}
+                {country.tld}
                 </p>
               </li>
               <li className='list-none'>
                 <p>
                 <span className='font-bold pr-2'>Currencies:</span> 
-                {country.currencies[0]}
+                  {monedaDelPais}
                 </p>
               </li>
               <li className='list-none'>
                 <p>
-                <span className='font-bold pr-2'>Languages:</span> 
-                {/* {country.languages.map(lang => lang.name).join(', ')} */}
+                  <span className='font-bold pr-2'>Languages:</span> 
+                  {languagesDelPais.length > 1 ? languagesDelPais.join(" - ") : languagesDelPais}
                 </p>
               </li>
             </div>
@@ -97,17 +104,17 @@ function CountryDetail() {
 
           {country.borders &&
 
-          <ul className='flex flex-wrap gap-4 list-none'>
+          <ul className='flex flex-wrap md:flex-row md:flex-wrap gap-4 list-none'>
             <h2 className='font-bold'>
               Border countries:
             </h2>
-            {country.borders.map((borderCode) => (
-              <li key={borderCode}>
+            {country.borders.map((borderCountry) => (
+              <li key={borderCountry}>
                 <a 
-                  href={`/country/${borderCode}`} 
-                  className='border border-gray-300 p-2 px-4'
+                  href={`/country/${borderCountry}`} 
+                  className='p-2 px-6 border border-gray-100 rounded shadow-lg'
                 >
-                  {borderCode}
+                  {borderCountry}
                 </a>
               </li>
             ))}

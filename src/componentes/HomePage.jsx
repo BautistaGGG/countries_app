@@ -31,18 +31,19 @@ function HomePage() {
   }
 
   return (
-    <main className='container mx-auto'>
-      <section className='flex flex-col gap-8 md:gap-0 md:flex-row justify-between my-8'>
+    <main className='container mx-auto bg-lightModeBackground'>
+      <section className='flex flex-col gap-8 md:gap-0 md:flex-row justify-between my-8 px-4 md:px-0 lg:px-0'>
         <input 
           type="text" value={searchQuery} 
           onChange={onChangeBusqueda} 
           placeholder="Search for a country..." 
           className='py-3 pl-4 pr-40 border border-slate-100 rounded-lg shadow-md'
         />
+
         <select 
           value={selectedRegion} 
           onChange={onChangeRegion}
-          className='py-3 px-5 shadow-lg'
+          className='py-3 px-5 rounded-lg shadow-xl'
         >
           <option value="">
             All regions
@@ -73,7 +74,7 @@ function HomePage() {
                 src={country.flags.svg} 
                 alt={country.name.common + "flag"} 
               />
-              <div className='p-4'>
+              <div className='p-4 text-TextoDarkBlue'>
                 <h2 className='text-2xl font-bold'>
                   {country.name.common}
                 </h2>
